@@ -20,12 +20,11 @@ Our knowledge distillation framework uses SocialC3D as the teacher model, which 
 ## Result
 |                            | Params (M) | FLOPs (M) | Intent_F1 | Attitude_F1 | Action_F1 |
 |----------------------------|------------|-----------|-----------|-------------|-----------|
-| ST-GCN^{+} [4]             | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
-| ST-TR^{+} [5]              | 8.78       | Δ + 3.47  | 83.92     | 84.34       | 67.18     |
+| ST-GCN [4]             | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
+| ST-TR[^+] [5]              | 8.78       | Δ + 3.47  | 83.92     | 84.34       | 67.18     |
 | MS-G3D^{+} [6]             | 12.82      | Δ + 4.74  | 90.02     | 90.11       | 73.29     |
 | SocialEgoNet^{+} [7]       | 12.82      | Δ + 4.74  | 90.02     | 90.11       | 73.29     |
 | **SocialEgoC3D (ours)**    | 3.18       | Δ + 0.56  | 88.43     | 88.99       | 69.57     |
-| -------------------------  |------------|-----------|-----------|-------------|-----------|
 | **SocialEgoMobile (ours)** | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
 
 Δ refers to the time to extract the whole-body pose keypoints. In our case, [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) takes 1.27 ms to extract whole-body pose features from an annotated frame.
