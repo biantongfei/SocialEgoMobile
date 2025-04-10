@@ -29,7 +29,8 @@ Our knowledge distillation framework uses SocialC3D as the teacher model, which 
 gestures, and gaze. Each modality is processed by a ResNet [1] and integrated via lateral connections and late fusion,
 producing a high-quality social representation for downstream tasks. The lightweight student model, SocialEgoMobile,
 uses only corrupted body pose. It consists of a two-layer GAT [2] and a single-layer Bi-LSTM [3] to extract social
-representations. The framework distillates knowledge from the teacher model by maximising the mutual information [4] of the
+representations. The framework distillates knowledge from the teacher model by maximising the mutual information [4] of
+the
 social representations output by the teacher and student model. Whole body pose features were extracted
 using [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) and gaze features were extracted
 using [MCGaze](https://github.com/zgchen33/MCGaze).
@@ -81,8 +82,9 @@ social action forecast. Improvements on downstream task accuracy through distill
 
 ## Data
 
-The datasets used in this paper can be downloaded here: JPL-Social and HARPER. A detailed description of the datasets
-can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
+The datasets used in this paper can be downloaded
+here: [JPL-Social](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link) and HARPER. A
+detailed description of the datasets can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 and [HARPER](https://github.com/intelligolabs/HARPER).
 
 ## Train and Test
