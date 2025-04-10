@@ -2,7 +2,7 @@
 
 This is the official repo for the paper: 
 
-[Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation]https://arxiv.org/abs/2412.16698) [![arXiv](https://img.shields.io/badge/arXiv-2412.16698-b31b1b.svg)](https://arxiv.org/abs/2412.16698)
+[Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation](https://arxiv.org/abs/2412.16698) [![arXiv](https://img.shields.io/badge/arXiv-2412.16698-b31b1b.svg)](https://arxiv.org/abs/2412.16698)
 
 <div align="center">
     <img src="docs/teaser.png", height="280" alt>
