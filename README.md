@@ -5,14 +5,14 @@ This is the official repo for the paper:
 [Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation](https://arxiv.org/abs/2412.16698) [![arXiv](https://img.shields.io/badge/arXiv-2412.16698-b31b1b.svg)](https://arxiv.org/abs/2412.16698)
 
 <div align="center", style="background-color: white; padding: 20px">
-    <img src="docs/teaser.png", height="280" alt>
+    <img src="docs/teaser_bg.png", height="280" alt>
 </div>
 
 Abstract:
  The need for social robots and agents to interact and assist humans is growing steadily. To be able to successfully interact with humans, they need to understand and analyse  socially interactive scenes from their (robot's) perspective. Works that model social situations between humans and agents are few; and even those existing ones are often too computationally intensive to be suitable for deployment in real time or on real world scenarios with limited available information. We propose a robust knowledge distillation framework that models social interactions through various multimodal cues, yet is robust against incomplete and noisy information during inference. Our teacher model is trained with multimodal input (body, face and hand gestures, gaze, raw images) that transfers knowledge to a student model that relies solely on body pose. Extensive experiments on two publicly available human-robot interaction datasets demonstrate that the our student model achieves an average accuracy gain of 14.75\% over relevant baselines on multiple downstream social understanding task even with up to 51\% of its input being corrupted. The student model is highly efficient: it is $<1$\% in size of the teacher model in terms of parameters and uses $\sim 0.5$\textperthousand~FLOPs of that in the teacher model.
 
 <div align="center", style="background-color: white; padding: 20px">
-    <img src="docs/distillation.png", height="200" alt>
+    <img src="docs/distillation_bg.png", height="800" alt>
 <div align="center">
     The intent-to-interact task forecasts whether a person in the field of view is interacting, interested or not interested. 
     Attitude towards agent is either positive or negative. 
