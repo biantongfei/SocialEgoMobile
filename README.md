@@ -12,11 +12,10 @@ Abstract:
 The need for social robots and agents to interact and assist humans is growing steadily. To be able to successfully interact with humans, they need to understand and analyse  socially interactive scenes from their (robot's) perspective. Works that model social situations between humans and agents are few; and even those existing ones are often too computationally intensive to be suitable for deployment in real time or on real world scenarios with limited available information. We propose a robust knowledge distillation framework that models social interactions through various multimodal cues, yet is robust against incomplete and noisy information during inference. Our teacher model is trained with multimodal input (body, face and hand gestures, gaze, raw images) that transfers knowledge to a student model that relies solely on body pose. Extensive experiments on two publicly available human-robot interaction datasets demonstrate that the our student model achieves an average accuracy gain of 14.75% over relevant baselines on multiple downstream social understanding task even with up to 51\% of its input being corrupted. The student model is highly efficient: it is <1% in size of the teacher model in terms of parameters and uses ~ 0.55‰ FLOPs of that in the teacher model.
 
 <div align="center">
-    <img src="docs/distillation_bg.png", height="750" alt>
-<div align="center">
+    <img src="docs/distillation_bg.png", height="650" alt>
+</div>
+
 Our knowledge distillation framework uses SocialC3D as the teacher model, which fuses raw images, body, face, hand gestures, and gaze. Each modality is processed by a ResNet [1] and integrated via lateral connections and late fusion, producing a high-quality social representation for downstream tasks. The lightweight student model, SocialEgoMobile, uses only corrupted body pose. It consists of a two-layer GAT [2] and a single-layer Bi-LSTM [3] to extract social representations. The framework distillates knowledge from the teacher model by maximising the mutual information of the social representations output by the teacher and student model.
-</div>
-</div>
 
 ## Result
 |                            | Params (M) | FLOPs (M) | Intent_F1 | Attitude_F1 | Action_F1 |
