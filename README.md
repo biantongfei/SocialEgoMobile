@@ -18,14 +18,15 @@ The need for social robots and agents to interact and assist humans is growing s
 Our knowledge distillation framework uses SocialC3D as the teacher model, which fuses raw images, body, face, hand gestures, and gaze. Each modality is processed by a ResNet [1] and integrated via lateral connections and late fusion, producing a high-quality social representation for downstream tasks. The lightweight student model, SocialEgoMobile, uses only corrupted body pose. It consists of a two-layer GAT [2] and a single-layer Bi-LSTM [3] to extract social representations. The framework distillates knowledge from the teacher model by maximising the mutual information of the social representations output by the teacher and student model.
 
 ## Result
-|                            | Params (M) | FLOPs (M) | Intent_F1 | Attitude_F1 | Action_F1 |
-|----------------------------|------------|-----------|-----------|-------------|-----------|
-| ST-GCN<sup>+</sup> [4]             | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
-| ST-TR [^+] [5]              | 8.78       | Δ + 3.47  | 83.92     | 84.34       | 67.18     |
-| MS-G3D^{+} [6]             | 12.82      | Δ + 4.74  | 90.02     | 90.11       | 73.29     |
-| SocialEgoNet^{+} [7]       | 12.82      | Δ + 4.74  | 90.02     | 90.11       | 73.29     |
-| **SocialEgoC3D (ours)**    | 3.18       | Δ + 0.56  | 88.43     | 88.99       | 69.57     |
-| **SocialEgoMobile (ours)** | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
+**Performace**
+|                              | Params (M) | FLOPs (M) | Intent Acc. | Attitude Acc. | Action Acc. |
+|------------------------------|------------|-----------|-----------|-------------|-----------|
+| ST-GCN<sup>+</sup> [4]       | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
+| ST-TR<sup>+</sup> [5]        | 8.78       | Δ + 3.47  | 83.92     | 84.34       | 67.18     |
+| MS-G3D<sup>+</sup> [6]       | 12.82      | Δ + 4.74  | 90.02     | 90.11       | 73.29     |
+| SocialEgoNet<sup>+</sup> [7] | 12.82      | Δ + 4.74  | 90.02     | 90.11       | 73.29     |
+| **SocialEgoC3D (ours)**      | 3.18       | Δ + 0.56  | 88.43     | 88.99       | 69.57     |
+| **SocialEgoMobile (ours)**   | 9.42       | Δ + 1.40  | 87.30     | 87.84       | 65.19     |
 
 Δ refers to the time to extract the whole-body pose keypoints. In our case, [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) takes 1.27 ms to extract whole-body pose features from an annotated frame.
 
