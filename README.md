@@ -36,15 +36,27 @@ social representations output by the teacher and student model.
 
 **Performance**
 
-| | | | Intent Acc. | Attitude Acc. | Action Acc. |
-| | Params (M) | FLOPs (M) | Intent Acc. | Attitude Acc. | Action Acc. |
+|                              | Params (M) | FLOPs (M) | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|------------|-----------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [4]       | 9.42 | Δ + 1.40 | 87.30 | 87.84 | 65.19 |
-| ST-TR<sup>+</sup> [5]        | 8.78 | Δ + 3.47 | 83.92 | 84.34 | 67.18 |
-| MS-G3D<sup>+</sup> [6]       | 12.82 | Δ + 4.74 | 90.02 | 90.11 | 73.29 |
-| SocialEgoNet<sup>+</sup> [7] | 12.82 | Δ + 4.74 | 90.02 | 90.11 | 73.29 |
-| **SocialEgoC3D (ours)**      | 3.18 | Δ + 0.56 | 88.43 | 88.99 | 69.57 |
-| **SocialEgoMobile (ours)**   | 9.42 | Δ + 1.40 | 87.30 | 87.84 | 65.19 |
+| ST-GCN<sup>+</sup> [4]       | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
+| ST-TR<sup>+</sup> [5]        | 8.78       | Δ + 3.47  | 83.92       | 84.34         | 67.18       |
+| MS-G3D<sup>+</sup> [6]       | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
+| SocialEgoNet<sup>+</sup> [7] | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
+| **SocialEgoC3D (ours)**      | 3.18       | Δ + 0.56  | 88.43       | 88.99         | 69.57       |
+| **SocialEgoMobile (ours)**   | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
+
+Performance of JPL-Social
+
+|                              | Intent Acc. | Attitude Acc. | Action Acc. |
+|------------------------------|-------------|---------------|-------------|
+| ST-GCN<sup>+</sup> [4]       | 87.30       | 87.84         | 65.19       |
+| ST-TR<sup>+</sup> [5]        | 83.92       | 84.34         | 67.18       |
+| MS-G3D<sup>+</sup> [6]       | 90.02       | 90.11         | 73.29       |
+| SocialEgoNet<sup>+</sup> [7] | 90.02       | 90.11         | 73.29       |
+| **SocialEgoC3D (ours)**      | 88.43       | 88.99         | 69.57       |
+| **SocialEgoMobile (ours)**   | 87.30       | 87.84         | 65.19       |
+
+Performance on HARPER
 
 Δ refers to the time to extract the whole-body pose keypoints. In our
 case, [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) takes 1.27 ms to extract whole-body pose features from an
