@@ -41,39 +41,39 @@ using [MCGaze](https://github.com/zgchen33/MCGaze).
 
 |                              | Params (M) | FLOPs (M) | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|------------|-----------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [5]       | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
-| ST-TR<sup>+</sup> [6]        | 8.78       | Δ + 3.47  | 83.92       | 84.34         | 67.18       |
-| MS-G3D<sup>+</sup> [7]       | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
-| SocialEgoNet<sup>+</sup> [8] | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
-| **SocialEgoC3D (ours)**      | 3.18       | Δ + 0.56  | 88.43       | 88.99         | 69.57       |
-| **SocialEgoMobile (ours)**   | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
+| ST-GCN<sup>+</sup> [5]       | 42.86      | 1924.87   | 86.90       | 76.19         | 71.43       |
+| ST-TR<sup>+</sup> [6]        | 58.48      | 4724.63   | 79.76       | 59.52         | 48.81       |
+| MS-G3D<sup>+</sup> [7]       | 48.82      | 5241.97   | 88.10       | 80.95         | 76.19       |
+| SocialEgoNet<sup>+</sup> [8] | 37.78      | 422.35    | 86.90       | 77.38         | 71.43       |
+| **SocialEgoC3D (ours)**      | 48.49      | 7902.19   | **92.85**   | **88.10**     | **82.14**   |
+| **SocialEgoMobile (ours)**   | **0.43**   | **4.23**  | 82.14       | 71.43         | 67.86       |
 
 Table.1 Performance of [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 
 |                              | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [5]       | 87.30       | 87.84         | 65.19       |
-| ST-TR<sup>+</sup> [6]        | 83.92       | 84.34         | 67.18       |
-| MS-G3D<sup>+</sup> [7]       | 90.02       | 90.11         | 73.29       |
-| SocialEgoNet<sup>+</sup> [8] | 90.02       | 90.11         | 73.29       |
-| **SocialEgoC3D (ours)**      | 88.43       | 88.99         | 69.57       |
-| **SocialEgoMobile (ours)**   | 87.30       | 87.84         | 65.19       |
+| ST-GCN<sup>+</sup> [5]       | 86.54       | 73.08         | 78.85       |
+| ST-TR<sup>+</sup> [6]        | 75.00       | 65.38         | 59.61       |
+| MS-G3D<sup>+</sup> [7]       | 90.38       | 78.85         | 80.77       |
+| SocialEgoNet<sup>+</sup> [8] | 86.54       | 75.00         | 78.85       |
+| **SocialEgoC3D (ours)**      | **96.15**   | **82.69**     | **88.46**   |
+| **SocialEgoMobile (ours)**   | 69.23       | 44.23         | 52.19       |
 
 Table.2 Performance on [HARPER](https://github.com/intelligolabs/HARPER)
 
 Comparison of SocialC3D and SocialEgoMobile with state-of-the-art methods on
 the [JPL-Social](https://github.com/biantongfei/SocialEgoNet) and [HARPER](https://github.com/intelligolabs/HARPER).
 SocialEgoMobile relies solely on clean body pose features as input. '+' indicates that the model uses raw image and gaze
-information.
+information. SocialEgoMobile only use body pose as input.
 
 ### Robustness Analysis
 
 <div align="center">
-    <img src="docs/corrupted_bar_jpl_bg.png", height="650" alt>
+    <img src="docs/corrupted_bar_jpl_bg.png", height="400" alt>
 </div>
 
 <div align="center">
-    <img src="docs/corrupted_bar_harper_bg.png", height="650" alt>
+    <img src="docs/corrupted_bar_harper_bg.png", height="400" alt>
 </div>
 
 Knowledge distillation (KD) consistently improves the performance of the student model, SocialEgoMobile, under
