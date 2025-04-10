@@ -69,11 +69,11 @@ information. SocialEgoMobile only use body pose as input.
 ### Robustness Analysis
 
 <div align="center">
-    <img src="docs/corrupted_bar_jpl_bg.png", height="400" alt>
+    <img src="docs/corrupted_bar_jpl_bg.png", height="300" alt>
 </div>
 
 <div align="center">
-    <img src="docs/corrupted_bar_harper_bg.png", height="400" alt>
+    <img src="docs/corrupted_bar_harper_bg.png", height="300" alt>
 </div>
 
 Knowledge distillation (KD) consistently improves the performance of the student model, SocialEgoMobile, under
