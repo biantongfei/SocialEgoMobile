@@ -18,8 +18,8 @@ multimodal cues, yet is robust against incomplete and noisy information during i
 with multimodal input (body, face and hand gestures, gaze, raw images) that transfers knowledge to a student model that
 relies solely on body pose. Extensive experiments on two publicly available human-robot interaction datasets demonstrate
 that the our student model achieves an average accuracy gain of 14.75% over relevant baselines on multiple downstream
-social understanding task even with up to 51\% of its input being corrupted. The student model is highly efficient: it
-is <1% in size of the teacher model in terms of parameters and uses ~ 0.55‰ FLOPs of that in the teacher model.
+social understanding task even with up to 51% of its input being corrupted. The student model is highly efficient: it
+is < 1% in size of the teacher model in terms of parameters and uses ~ 0.55‰ FLOPs of that in the teacher model.
 
 <div align="center">
     <img src="docs/distillation_bg.png", height="650" alt>
@@ -29,69 +29,61 @@ Our knowledge distillation framework uses SocialC3D as the teacher model, which 
 gestures, and gaze. Each modality is processed by a ResNet [1] and integrated via lateral connections and late fusion,
 producing a high-quality social representation for downstream tasks. The lightweight student model, SocialEgoMobile,
 uses only corrupted body pose. It consists of a two-layer GAT [2] and a single-layer Bi-LSTM [3] to extract social
-representations. The framework distillates knowledge from the teacher model by maximising the mutual information of the
-social representations output by the teacher and student model.
+representations. The framework distillates knowledge from the teacher model by maximising the mutual information [4] of the
+social representations output by the teacher and student model. Whole body pose features were extracted
+using [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) and gaze features were extracted
+using [MCGaze](https://github.com/zgchen33/MCGaze).
 
 ## Result
 
-**Performance**
+###Performance
 
 |                              | Params (M) | FLOPs (M) | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|------------|-----------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [4]       | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
-| ST-TR<sup>+</sup> [5]        | 8.78       | Δ + 3.47  | 83.92       | 84.34         | 67.18       |
-| MS-G3D<sup>+</sup> [6]       | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
-| SocialEgoNet<sup>+</sup> [7] | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
+| ST-GCN<sup>+</sup> [5]       | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
+| ST-TR<sup>+</sup> [6]        | 8.78       | Δ + 3.47  | 83.92       | 84.34         | 67.18       |
+| MS-G3D<sup>+</sup> [7]       | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
+| SocialEgoNet<sup>+</sup> [8] | 12.82      | Δ + 4.74  | 90.02       | 90.11         | 73.29       |
 | **SocialEgoC3D (ours)**      | 3.18       | Δ + 0.56  | 88.43       | 88.99         | 69.57       |
 | **SocialEgoMobile (ours)**   | 9.42       | Δ + 1.40  | 87.30       | 87.84         | 65.19       |
 
-Performance of JPL-Social
+Table.1 Performance of [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 
 |                              | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [4]       | 87.30       | 87.84         | 65.19       |
-| ST-TR<sup>+</sup> [5]        | 83.92       | 84.34         | 67.18       |
-| MS-G3D<sup>+</sup> [6]       | 90.02       | 90.11         | 73.29       |
-| SocialEgoNet<sup>+</sup> [7] | 90.02       | 90.11         | 73.29       |
+| ST-GCN<sup>+</sup> [5]       | 87.30       | 87.84         | 65.19       |
+| ST-TR<sup>+</sup> [6]        | 83.92       | 84.34         | 67.18       |
+| MS-G3D<sup>+</sup> [7]       | 90.02       | 90.11         | 73.29       |
+| SocialEgoNet<sup>+</sup> [8] | 90.02       | 90.11         | 73.29       |
 | **SocialEgoC3D (ours)**      | 88.43       | 88.99         | 69.57       |
 | **SocialEgoMobile (ours)**   | 87.30       | 87.84         | 65.19       |
 
-Performance on HARPER
+Table.2 Performance on [HARPER](https://github.com/intelligolabs/HARPER)
 
-Δ refers to the time to extract the whole-body pose keypoints. In our
-case, [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) takes 1.27 ms to extract whole-body pose features from an
-annotated frame.
+Comparison of SocialC3D and SocialEgoMobile with state-of-the-art methods on
+the [JPL-Social](https://github.com/biantongfei/SocialEgoNet) and [HARPER](https://github.com/intelligolabs/HARPER).
+SocialEgoMobile relies solely on clean body pose features as input. '+' indicates that the model uses raw image and gaze
+information.
+
+### Robustness Analysis
+
+<div align="center">
+    <img src="docs/corrupted_bar_jpl_bg.png", height="650" alt>
+</div>
+
+<div align="center">
+    <img src="docs/corrupted_bar_harper_bg.png", height="650" alt>
+</div>
+
+Knowledge distillation (KD) consistently improves the performance of the student model, SocialEgoMobile, under
+Individual and simultaneous spatio-temporal corruption on all three downstream tasks, interaction intent, attitude, and
+social action forecast. Improvements on downstream task accuracy through distillation are labelled.
 
 ## Data
 
-This dataset used in the paper, JPL-Social, is based on
-the [JPL First-Person Interaction dataset (JPL-Interaction dataset)](http://michaelryoo.com/jpl-interaction.html).
-JPL-Social has the whole-body key points of people in videos getting
-from [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose), including body, face and hand, and the additional social
-intention attitude and action classes of each person in videos. JPL-Social can be downloaded
-from [here](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link).
-
-Metadata
-
-```
-{
-  "video_name": Name of the video this person is in (string),
-  "frame_size": [width of the frame (integer), height of the frame (integer)] (array),
-  "video_frames_number": Number of video frames,
-  "detected_frames_number": Number of frames the person is detected by Alphapose,
-  "person_id": Id of this person in the video (integer),
-  "attitude_class": attitude id of this person (integer),
-  "action_class": action id of this person (integer),
-  "frames": [{
-      "frame_id": Id of video frame (Integer),
-      "key points": [[x (float), y (float), score (float)], ..., [x, y, score]] (array),
-      "score": Confidence score of this person this frame (float),
-      "box": [x (float), y (float), width (float), height (float)] - bounding box information,
-      },
-      ...,
-      ]
-}
-```
+The datasets used in this paper can be downloaded here: JPL-Social and HARPER. A detailed description of the datasets
+can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
+and [HARPER](https://github.com/intelligolabs/HARPER).
 
 ## Train and Test
 
@@ -111,22 +103,26 @@ python scripts/test.py --cfg config/test.yaml --check_point weights/socialegonet
 
 ## Citation
 
-Please cite the following paper if you use this repository in your reseach.
+Please cite the following paper if you use this repository in your research.
 
 ```
 @INPROCEEDINGS{bian2024interact,
   author={Bian, Tongfei and Ma, Yiming and Chollet, Mathieu and Sanchez, Victor and Guha, Tanaya},
   booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)}, 
   title={Interact with me: Joint Egocentric Forecasting of Intent to Interact, Attitude and Social Actions}, 
-  year={2024}
+  year={2025}
 }
 ```
 
 ## Refrences
 
 ```
-[1] Du Tran, Heng Wang, Lorenzo Torresani, Jamie Ray, Yann LeCun, and Manohar Paluri, “A closer look at spatiotemporal convolutions for action recognition,” in Proceedings of the IEEE conference on Computer Vision and Pattern Recognition, 2018, pp. 6450–6459. 2, 4, 5
-[2] Sijie Yan, Yuanjun Xiong, and Dahua Lin, “Spatial temporal graph convolutional networks for skeleton-based action recognition,” in Proceedings of the AAAI conference on artificial intelligence, 2018, vol. 32. 2, 4, 5
-[3] Haodong Duan, Jiaqi Wang, Kai Chen, and Dahua Lin, “Dg-stgcn: Dynamic spatial-temporal modeling for skeleton-based action recognition,”arXiv preprint arXiv:2210.05895, 2022. 4, 5
-[4] Ziyu Liu, Hongwen Zhang, Zhenghao Chen, Zhiyong Wang, and Wanli Ouyang, “Disentangling and unifying graph convolutions for skeleton-based action recognition,” in Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), June 2020. 4, 5
+[1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. 2016. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition. 770–778.
+[2] Petar Veličković, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Liò, and Yoshua Bengio. 2018. Graph Attention Networks. In International Conference on Learning Representations.
+[3] Alex Graves and Jürgen Schmidhuber. 2005. Framewise phoneme classification with bidirectional LSTM networks. In Proceedings. 2005 IEEE International Joint Conference on Neural Networks, 2005., Vol. 4. IEEE, 2047–2052.
+[4] Aaron van den Oord, Yazhe Li, and Oriol Vinyals. 2018. Representation learning with contrastive predictive coding. arXiv preprint arXiv:1807.03748 (2018).
+[5] Sijie Yan, Yuanjun Xiong, and Dahua Lin. 2018. Spatial temporal graph convolutional networks for skeleton-based action recognition. In Proceedings of the AAAI conference on artificial intelligence, Vol. 32.
+[6] Chiara Plizzari, Marco Cannici, and Matteo Matteucci. 2021. Spatial temporal transformer network for skeleton-based action recognition. In Pattern recognition. ICPR international workshops and challenges: virtual event, January 10–15, 2021, Proceedings, Part III. Springer, 694–701.
+[7] Ziyu Liu, Hongwen Zhang, Zhenghao Chen, Zhiyong Wang, and Wanli Ouyang. 2020. Disentangling and unifying graph convolutions for skeleton-based action recognition. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 143–152.
+[8] Tongfei Bian, Yiming Ma, Mathieu Chollet, Victor Sanchez, and Tanaya Guha. 2025. Interact with me: Joint Egocentric Forecasting of Intent to Interact, Attitude and Social Actions. In Proceedings of the IEEE International Conference on Multimedia and Expo (ICME).
 ```
