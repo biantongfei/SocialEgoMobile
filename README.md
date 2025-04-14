@@ -83,8 +83,7 @@ social action forecast. Improvements on downstream task accuracy through distill
 ## Data
 
 The datasets used in this paper can be downloaded
-here: [JPL-Social](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link) and HARPER. A
-detailed description of the datasets can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
+here: [JPL-Social]([https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=sharing)) and HARPER. A detailed description of the datasets can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 and [HARPER](https://github.com/intelligolabs/HARPER).
 
 ## Train and Test
