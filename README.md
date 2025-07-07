@@ -39,32 +39,37 @@ using [MCGaze](https://github.com/zgchen33/MCGaze).
 
 ###Performance
 
-|                              | Params (M) | Latency (ms)  | Intent Acc. | Attitude Acc. | Action Acc. |
-|------------------------------|------------|---------------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [5]       | 42.86      | Δ1 + 10.31    | 86.90       | 76.19         | 71.43       |
-| ST-TR<sup>+</sup> [6]        | 58.48      | Δ1 + 14.33    | 79.76       | 59.52         | 48.81       |
-| MS-G3D<sup>+</sup> [7]       | 48.82      | Δ1 + 13.74    | 88.10       | 80.95         | 76.19       |
-| SocialEgoNet<sup>+</sup> [8] | 37.78      | Δ1 + 10.05    | 86.90       | 77.38         | 71.43       |
-| **SocialEgoC3D (ours)**      | 48.49      | Δ1 + 22.34    | **92.85**   | **88.10**     | **82.14**   |
-| **SocialEgoMobile (ours)**   | **0.43**   | **Δ2 + 0.19** | 82.14       | 71.43         | 67.86       |
+|                                   | Params (M) | Latency (ms)  | Intent Acc. | Attitude Acc. | Action Acc. |
+|-----------------------------------|------------|---------------|-------------|---------------|-------------|
+| ST-GCN<sup>+</sup> [5]            | 42.86      | Δ1 + 10.31    | 86.90       | 76.19         | 71.43       |
+| ST-TR<sup>+</sup> [6]             | 58.48      | Δ1 + 14.33    | 79.76       | 59.52         | 48.81       |
+| MS-G3D<sup>+</sup> [7]            | 48.82      | Δ1 + 13.74    | 88.10       | 80.95         | 76.19       |
+| SocialEgoNet<sup>+</sup> [8]      | 37.78      | Δ1 + 10.05    | 86.90       | 77.38         | 71.43       |
+| **SocialEgoC3D (our teacher)**    | 48.49      | Δ1 + 22.34    | **92.85**   | **88.10**     | **82.14**   |
+| **SocialEgoMobile (our student)** | **0.43**   | **Δ2 + 0.19** | 82.14       | 71.43         | 67.86       |
 
-Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet), Δ1 denotes the time to extract whole-body pose and gaze features from a single frame, which is 4.96 ms under our experimental setup. Δ2 refers to the extraction time for body pose features, which is 3.06 ms.
+Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 
-|                              | Intent Acc. | Attitude Acc. | Action Acc. |
-|------------------------------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [5]       | 86.54       | 73.08         | 78.85       |
-| ST-TR<sup>+</sup> [6]        | 75.00       | 65.38         | 59.61       |
-| MS-G3D<sup>+</sup> [7]       | 90.38       | 78.85         | 80.77       |
-| SocialEgoNet<sup>+</sup> [8] | 86.54       | 75.00         | 78.85       |
-| **SocialEgoC3D (ours)**      | **96.15**   | **82.69**     | **88.46**   |
-| **SocialEgoMobile (ours)**   | 69.23       | 44.23         | 52.19       |
+|                                   | Intent Acc. | Attitude Acc. | Action Acc. |
+|-----------------------------------|-------------|---------------|-------------|
+| ST-GCN<sup>+</sup> [5]            | 86.54       | 73.08         | 78.85       |
+| ST-TR<sup>+</sup> [6]             | 75.00       | 65.38         | 59.61       |
+| MS-G3D<sup>+</sup> [7]            | 90.38       | 78.85         | 80.77       |
+| SocialEgoNet<sup>+</sup> [8]      | 86.54       | 75.00         | 78.85       |
+| **SocialEgoC3D (our teacher)**    | **96.15**   | **82.69**     | **88.46**   |
+| **SocialEgoMobile (our student)** | 69.23       | 44.23         | 52.19       |
 
 Table.2 Performance on [HARPER](https://github.com/intelligolabs/HARPER)
 
 Comparison of SocialC3D and SocialEgoMobile with state-of-the-art methods on
-the [JPL-Social](https://github.com/biantongfei/SocialEgoNet) and [HARPER](https://github.com/intelligolabs/HARPER).
-SocialEgoMobile relies solely on clean body pose features as input. '+' indicates that the model uses raw image and gaze
-information. SocialEgoMobile only use body pose as input.
+the [JPL-Social](https://github.com/biantongfei/SocialEgoNet) and [HARPER](https://github.com/intelligolabs/HARPER)
+dataset. SocialEgoMobile relies solely on clean body pose features as input. '+' indicates that the model uses raw image
+and gaze information. SocialEgoMobile only use body pose as input. Δ1 denotes the time to extract whole-body pose and
+gaze features from a single frame, which is 4.96 ms under our experimental setup. Δ2 refers to the extraction time for
+body pose features, which is 3.06 ms. As a teacher model, SocialC3D showed superior performance on both datasets and all
+subtasks. As a student model, SocialEgoMobile showed a notable decrease in performance, especially on the more difficult
+action prediction task and on the HARPER dataset. However, it shows an advantage in computational efficiency with a
+model size of ~1% of SocialC3D and its latency of 11.9% of SocialC3D.
 
 ### Robustness Analysis
 
