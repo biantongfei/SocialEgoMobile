@@ -1,8 +1,8 @@
 # SocialEgoMobile
 
-This is the official repo for ACM MM 25 paper:
+This is the official repo for the ACM MM 25 paper:
 
-[Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation](https://arxiv.org/abs/2412.16698) [![arXiv](https://img.shields.io/badge/arXiv-2412.16698-b31b1b.svg)](https://arxiv.org/abs/2412.16698)
+[Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation](https://arxiv.org/abs/2505.06278) [![arXiv](https://img.shields.io/badge/arXiv-2505.06278-b31b1b.svg)](https://arxiv.org/abs/2505.06278)
 
 <div align="center">
     <img src="docs/teaser_bg.png", height="280" alt>
