@@ -1,6 +1,6 @@
 # SocialEgoMobile
 
-This is the official repo for ACM MM25 paper:
+This is the official repo for ACM MM 25 paper:
 
 [Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation](https://arxiv.org/abs/2412.16698) [![arXiv](https://img.shields.io/badge/arXiv-2412.16698-b31b1b.svg)](https://arxiv.org/abs/2412.16698)
 
@@ -17,7 +17,7 @@ information. We propose a robust knowledge distillation framework that models so
 multimodal cues, yet is robust against incomplete and noisy information during inference. Our teacher model is trained
 with multimodal input (body, face and hand gestures, gaze, raw images) that transfers knowledge to a student model that
 relies solely on body pose. Extensive experiments on two publicly available human-robot interaction datasets demonstrate
-that the our student model achieves an average accuracy gain of 14.75% over relevant baselines on multiple downstream
+that our student model achieves an average accuracy gain of 14.75% over relevant baselines on multiple downstream
 social understanding task even with up to 51% of its input being corrupted. The student model is highly efficient: it
 is < 1% in size of the teacher model in terms of parameters and uses ~ 0.55‰ FLOPs of that in the teacher model.
 
@@ -41,12 +41,12 @@ using [MCGaze](https://github.com/zgchen33/MCGaze).
 
 |                              | Params (M) | Latency (ms) | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|------------|--------------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [5]       | 42.86      | 1924.87   | 86.90       | 76.19         | 71.43       |
-| ST-TR<sup>+</sup> [6]        | 58.48      | 4724.63   | 79.76       | 59.52         | 48.81       |
-| MS-G3D<sup>+</sup> [7]       | 48.82      | 5241.97   | 88.10       | 80.95         | 76.19       |
-| SocialEgoNet<sup>+</sup> [8] | 37.78      | 422.35    | 86.90       | 77.38         | 71.43       |
-| **SocialEgoC3D (ours)**      | 48.49      | 7902.19   | **92.85**   | **88.10**     | **82.14**   |
-| **SocialEgoMobile (ours)**   | **0.43**   | **4.23**  | 82.14       | 71.43         | 67.86       |
+| ST-GCN<sup>+</sup> [5]       | 42.86      | 1924.87      | 86.90       | 76.19         | 71.43       |
+| ST-TR<sup>+</sup> [6]        | 58.48      | 4724.63      | 79.76       | 59.52         | 48.81       |
+| MS-G3D<sup>+</sup> [7]       | 48.82      | 5241.97      | 88.10       | 80.95         | 76.19       |
+| SocialEgoNet<sup>+</sup> [8] | 37.78      | 422.35       | 86.90       | 77.38         | 71.43       |
+| **SocialEgoC3D (ours)**      | 48.49      | 7902.19      | **92.85**   | **88.10**     | **82.14**   |
+| **SocialEgoMobile (ours)**   | **0.43**   | **4.23**     | 82.14       | 71.43         | 67.86       |
 
 Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet), (\delta_1)
 
@@ -83,7 +83,9 @@ social action forecast. Improvements on downstream task accuracy through distill
 ## Data
 
 The datasets used in this paper can be downloaded
-here: [JPL-Social]([https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=sharing)) and HARPER. A detailed description of the datasets can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
+here: [JPL-Social]([https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=sharing))
+and HARPER. A detailed description of the datasets can be found
+here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 and [HARPER](https://github.com/intelligolabs/HARPER).
 
 ## Train and Test
