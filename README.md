@@ -39,16 +39,16 @@ using [MCGaze](https://github.com/zgchen33/MCGaze).
 
 ###Performance
 
-|                              | Params (M) | Latency (ms) | Intent Acc. | Attitude Acc. | Action Acc. |
-|------------------------------|------------|--------------|-------------|---------------|-------------|
-| ST-GCN<sup>+</sup> [5]       | 42.86      | Δ_1 + 10.31  | 86.90       | 76.19         | 71.43       |
-| ST-TR<sup>+</sup> [6]        | 58.48      | 4724.63      | 79.76       | 59.52         | 48.81       |
-| MS-G3D<sup>+</sup> [7]       | 48.82      | 5241.97      | 88.10       | 80.95         | 76.19       |
-| SocialEgoNet<sup>+</sup> [8] | 37.78      | 422.35       | 86.90       | 77.38         | 71.43       |
-| **SocialEgoC3D (ours)**      | 48.49      | 7902.19      | **92.85**   | **88.10**     | **82.14**   |
-| **SocialEgoMobile (ours)**   | **0.43**   | **4.23**     | 82.14       | 71.43         | 67.86       |
+|                              | Params (M) | Latency (ms)  | Intent Acc. | Attitude Acc. | Action Acc. |
+|------------------------------|------------|---------------|-------------|---------------|-------------|
+| ST-GCN<sup>+</sup> [5]       | 42.86      | Δ1 + 10.31    | 86.90       | 76.19         | 71.43       |
+| ST-TR<sup>+</sup> [6]        | 58.48      | Δ1 + 14.33    | 79.76       | 59.52         | 48.81       |
+| MS-G3D<sup>+</sup> [7]       | 48.82      | Δ1 + 13.74    | 88.10       | 80.95         | 76.19       |
+| SocialEgoNet<sup>+</sup> [8] | 37.78      | Δ1 + 10.05    | 86.90       | 77.38         | 71.43       |
+| **SocialEgoC3D (ours)**      | 48.49      | Δ1 + 22.34    | **92.85**   | **88.10**     | **82.14**   |
+| **SocialEgoMobile (ours)**   | **0.43**   | **Δ2 + 0.19** | 82.14       | 71.43         | 67.86       |
 
-Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet), (\delta_1)
+Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet), Δ1 denotes the time to extract whole-body pose and gaze features from a single frame, which is 4.96 ms under our experimental setup. Δ2 refers to the extraction time for body pose features, which is 3.06 ms.
 
 |                              | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|-------------|---------------|-------------|
