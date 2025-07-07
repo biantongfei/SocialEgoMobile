@@ -1,6 +1,6 @@
 # SocialEgoMobile
 
-This is the official repo for the paper:
+This is the official repo for ACM MM25 paper:
 
 [Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation](https://arxiv.org/abs/2412.16698) [![arXiv](https://img.shields.io/badge/arXiv-2412.16698-b31b1b.svg)](https://arxiv.org/abs/2412.16698)
 
@@ -39,8 +39,8 @@ using [MCGaze](https://github.com/zgchen33/MCGaze).
 
 ###Performance
 
-|                              | Params (M) | FLOPs (M) | Intent Acc. | Attitude Acc. | Action Acc. |
-|------------------------------|------------|-----------|-------------|---------------|-------------|
+|                              | Params (M) | Latency (ms) | Intent Acc. | Attitude Acc. | Action Acc. |
+|------------------------------|------------|--------------|-------------|---------------|-------------|
 | ST-GCN<sup>+</sup> [5]       | 42.86      | 1924.87   | 86.90       | 76.19         | 71.43       |
 | ST-TR<sup>+</sup> [6]        | 58.48      | 4724.63   | 79.76       | 59.52         | 48.81       |
 | MS-G3D<sup>+</sup> [7]       | 48.82      | 5241.97   | 88.10       | 80.95         | 76.19       |
@@ -48,7 +48,7 @@ using [MCGaze](https://github.com/zgchen33/MCGaze).
 | **SocialEgoC3D (ours)**      | 48.49      | 7902.19   | **92.85**   | **88.10**     | **82.14**   |
 | **SocialEgoMobile (ours)**   | **0.43**   | **4.23**  | 82.14       | 71.43         | 67.86       |
 
-Table.1 Performance of [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
+Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet), (\delta_1)
 
 |                              | Intent Acc. | Attitude Acc. | Action Acc. |
 |------------------------------|-------------|---------------|-------------|
@@ -107,10 +107,10 @@ python scripts/test.py --cfg config/test.yaml --check_point weights/socialegonet
 Please cite the following paper if you use this repository in your research.
 
 ```
-@INPROCEEDINGS{bian2024interact,
+@INPROCEEDINGS{bian2025robust,
   author={Bian, Tongfei and Ma, Yiming and Chollet, Mathieu and Sanchez, Victor and Guha, Tanaya},
-  booktitle={2025 IEEE International Conference on Multimedia and Expo (ICME)}, 
-  title={Interact with me: Joint Egocentric Forecasting of Intent to Interact, Attitude and Social Actions}, 
+  booktitle={Proceedings of the 33nd ACM International Conference on Multimedia}, 
+  title={Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation}, 
   year={2025}
 }
 ```
