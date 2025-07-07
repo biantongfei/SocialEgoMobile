@@ -9,17 +9,17 @@ This is the official repo for ACM MM 25 paper:
 </div>
 
 Abstract:
-The need for social robots and agents to interact and assist humans is growing steadily. To be able to successfully
-interact with humans, they need to understand and analyse socially interactive scenes from their (robot's) perspective.
-Works that model social situations between humans and agents are few; and even those existing ones are often too
-computationally intensive to be suitable for deployment in real time or on real world scenarios with limited available
-information. We propose a robust knowledge distillation framework that models social interactions through various
-multimodal cues, yet is robust against incomplete and noisy information during inference. Our teacher model is trained
-with multimodal input (body, face and hand gestures, gaze, raw images) that transfers knowledge to a student model that
-relies solely on body pose. Extensive experiments on two publicly available human-robot interaction datasets demonstrate
-that our student model achieves an average accuracy gain of 14.75% over relevant baselines on multiple downstream
-social understanding task even with up to 51% of its input being corrupted. The student model is highly efficient: it
-is < 1% in size of the teacher model in terms of parameters and uses ~ 0.55‰ FLOPs of that in the teacher model.
+The need for social robots and agents to interact with and assist users is growing steadily. To naturally interact with
+humans, they need to understand and analyse socially interactive scenes from their (robot's) perspective. Works that
+model social situations between humans and agents are few; and even those existing ones are often too computationally
+intensive to be suitable for deployment in real-time or on real-world scenarios with limited available information. We
+propose a robust knowledge distillation framework that models social interactions through various multimodal cues, yet
+is robust against incomplete and noisy information during inference. Our teacher model is trained with multimodal
+input (body, face and hand gestures, gaze, raw images) that transfers knowledge to a student model that relies solely on
+body pose. Extensive experiments on two publicly available human-robot interaction datasets demonstrate that our student
+model achieves an average accuracy gain of 14.75% over relevant baselines on multiple downstream social understanding
+tasks even with up to 51% of its input being corrupted. The student model is highly efficient: it is <1% in size of
+the teacher model in terms of parameters and its latency is 11.9% of the teacher model.
 
 <div align="center">
     <img src="docs/distillation_bg.png", height="650" alt>
@@ -73,6 +73,12 @@ model size of ~1% of SocialC3D and its latency of 11.9% of SocialC3D.
 
 ### Robustness Analysis
 
+To address the practical challenges faced by mobile socially intelligent agents from an egocentric perspective, such as
+occlusion of user body parts and pose estimation error, we deliberately introduced random spatiotemporal corruption into
+the input of the student model SocialEgoMobile. The goal is to improve robustness by using the multimodal and
+uncorrupted knowledge extracted from the teacher model, SocialC3D, to supervise the learning of the student model with
+corrupted inputs.
+
 <div align="center">
     <img src="docs/corrupted_bar_jpl_bg.png", height="250" alt>
 </div>
@@ -95,15 +101,27 @@ and [HARPER](https://github.com/intelligolabs/HARPER).
 
 ## Train and Test
 
-To train and test SocialEgoNet on JPL-Social, you need download the data and save it under the current project path.
+To train and test SocialC3D and SocialEgoMobile, you need download the data and save it under the current project path.
 
-To train a new SocialEgoNet, run
+To train a new SocialC3D, run
 
 ```
 python scripts/train.py --cfg config/train.yaml
 ```
 
-To test the pretrained weights on JPL-Social, run
+To train a new SocialEgoMobile, run
+
+```
+python scripts/train.py --cfg config/train.yaml
+```
+
+To test the pretrained weights of SocialC3D, run
+
+```
+python scripts/test.py --cfg config/test.yaml --check_point weights/socialegonet_jpl.pt
+```
+
+To test the pretrained weights of SocialEgoMobile, run
 
 ```
 python scripts/test.py --cfg config/test.yaml --check_point weights/socialegonet_jpl.pt
