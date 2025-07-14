@@ -1,0 +1,26 @@
+train:
+  batch_size: 96
+  independent_training_epochs: 40
+  distillation_epochs: 70
+  warmup_epochs: 30
+  modality: [ 'rgb','body','face','hand','gaze' ]
+  learning_rate: 0.01
+  optimizer: adam
+  step_size: 10
+  gamma: 0.5
+  infonce_temperature: 0.1
+  mi_loss_weight: 0.2
+
+data:
+  sequence_length: 10
+  keypoint_drop_rate: 0.3
+  frame_drop_rate: 0.3
+
+
+model:
+  keypoint_hidden_dim: 16
+  gat_layers: 2
+  lstm_hidden_dim: 128
+  lstm_num_layers: 1
+  fc1_hidden: 64
+  fc2_hidden: 16

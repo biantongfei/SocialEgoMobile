@@ -93,38 +93,50 @@ social action forecast. Improvements on downstream task accuracy through distill
 
 ## Data
 
-The datasets used in this paper can be downloaded
-here: [JPL-Social]([https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=drive_link](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=sharing))
-and HARPER. A detailed description of the datasets can be found
-here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
+The datasets used in this paper can be downloaded here:
+JPL_Social ([pose](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=sharing), [videos](http://michaelryoo.com/jpl-interaction.html))
+and
+HARPER ([pose](https://drive.google.com/file/d/1lczAS_XYBwN4jWYMIgzRfXFGFaeA98Xf/view?usp=sharing), [images](https://github.com/intelligolabs/HARPER)).
+A detailed description of the datasets can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 and [HARPER](https://github.com/intelligolabs/HARPER).
 
 ## Train and Test
+
+The pretrained weights of PoseC3D on Kinect-400 can be
+downloaded [here](https://github.com/open-mmlab/mmaction2/blob/main/configs/skeleton/posec3d/rgbpose_conv3d/README.md)
+and the pretrained weights of SocialC3D and SocialEgoMobile can be
+downloaded [here](https://drive.google.com/drive/folders/1j2_fad-rvbNG-Sy9VUzJ_VlRDqQ-r35B?usp=sharing).
 
 To train and test SocialC3D and SocialEgoMobile, you need download the data and save it under the current project path.
 
 To train a new SocialC3D, run
 
 ```
-python scripts/train.py --cfg config/train.yaml
+python scripts/train_SocialC3D.py --cfg config/SocialC3D.yaml --dataset JPL --pretrained
 ```
 
-To train a new SocialEgoMobile, run
+To train a new SocialEgoMobile independently, run
 
 ```
-python scripts/train.py --cfg config/train.yaml
+python scripts/train_SocialEgoMobile.py --cfg config/SocialEgoMobile.yaml --dataset JPL 
+```
+
+To train a new SocialEgoMobile via knowledge distillation, run
+
+```
+python scripts/train_SocialEgoMobile.py --cfg config/train_SocialEgoMobile.yaml --dataset JPL --distillation
 ```
 
 To test the pretrained weights of SocialC3D, run
 
 ```
-python scripts/test.py --cfg config/test.yaml --check_point weights/socialegonet_jpl.pt
+python scripts/test.py --cfg config/SocialEgoMobile.yaml --check_point weights/jpl_socialc3d_rgb_body_face_hand_gaze.pt.pt
 ```
 
 To test the pretrained weights of SocialEgoMobile, run
 
 ```
-python scripts/test.py --cfg config/test.yaml --check_point weights/socialegonet_jpl.pt
+python scripts/test.py --cfg config/SocialC3D.yaml --check_point weights/socialegomobile_jpl.pt
 ```
 
 ## Citation
@@ -133,7 +145,7 @@ Please cite the following paper if you use this repository in your research.
 
 ```
 @INPROCEEDINGS{bian2025robust,
-  author={Bian, Tongfei and Ma, Yiming and Chollet, Mathieu and Sanchez, Victor and Guha, Tanaya},
+  author={Bian, Tongfei and Chollet, Mathieu and Guha, Tanaya},
   booktitle={Proceedings of the 33nd ACM International Conference on Multimedia}, 
   title={Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation}, 
   year={2025}

@@ -1,0 +1,25 @@
+train:
+  batch_size: 96
+  epochs: 70
+  modality: [ 'rgb','body','face','hand','gaze' ]
+  learning_rate: 0.01
+  weight_decay: 0.0001
+  momentum: 0.9,
+  param_groups: [
+    { "params": [ ], "lr": 1e-2 },
+    { "params": [ ], "lr": 5e-3 },
+    { "params": [ ], "lr": 0.0075 },
+  ]
+  optimizer: sgd
+
+data:
+  sequence_length: 10
+
+
+model:
+  keypoint_hidden_dim: 16
+  gat_layers: 2
+  lstm_hidden_dim: 128
+  lstm_num_layers: 1
+  fc1_hidden: 64
+  fc2_hidden: 16
