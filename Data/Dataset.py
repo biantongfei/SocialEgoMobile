@@ -1,21 +1,12 @@
 import os
 import json
 import cv2
-import random
-from tqdm import tqdm
-import numpy as np
-
 import torch
 from torch.utils.data import Dataset
 import torchvision.transforms.functional as F
 import torchvision.transforms as transforms
 
 from constants import head_point_num, hands_point_num, coco_body_point_num, device
-
-
-def filter_not_interacting_sample(att_y_true, att_y_output):
-    mask = (att_y_true != 2)
-    return att_y_true[mask], att_y_output[mask]
 
 
 class Pose_Dataset(Dataset):
