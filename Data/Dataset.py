@@ -16,9 +16,9 @@ class Pose_Dataset(Dataset):
         self.data_path = data_path
         self.sequence_length = sequence_length
         self.features, self.labels = [], []
-        for file in self.files: self.get_graph_data_from_file(file)
+        for file in self.files: self.get_pose_data_from_file(file)
 
-    def get_graph_data_from_file(self, file):
+    def get_pose_data_from_file(self, file):
         with open(os.path.join(self.data_path, 'pse_features', file), 'r') as f:
             feature_json = json.load(f)
         if not feature_json['frames']:
