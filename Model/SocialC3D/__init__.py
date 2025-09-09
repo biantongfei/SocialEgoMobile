@@ -312,6 +312,10 @@ class SocialC3D(nn.Module):
         else:
             raise TypeError('pretrained must be a str or None')
 
+    def load_checkpoint(self, check_point):
+        weights = OrderedDict([[k.split('module.')[-1], v] for k, v in torch.load(check_point).items()])
+        self.load_state_dict(weights)
+
     def forward(self, x, representation) -> tuple:
         """Defines the computation performed at every call.
 

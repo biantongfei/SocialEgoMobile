@@ -1,6 +1,7 @@
 from torch import nn
 from torch_geometric.nn import GAT
 import torch
+from collections import OrderedDict
 
 from Model.Classifier import Chain_Classifier
 from constants import coco_body_point_num
@@ -31,6 +32,10 @@ class SocialEgoMobile(nn.Module):
             nn.BatchNorm1d(self.fc_hidden2),
         )
         self.classifier = Chain_Classifier(dataset, self.fc_hidden2)
+
+    def load_checkpoint(self, check_point):
+        weights = OrderedDict([[k.split('module.')[-1], v] for k, v in torch.load(check_point).items()])
+        self.load_state_dict(weights)
 
     def forward(self, data, representation=False):
         x_body = self.GCN_body(x=data.x, edge_index=data.edge_index, batch=data.batch)

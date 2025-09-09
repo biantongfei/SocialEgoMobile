@@ -1,14 +1,14 @@
 train:
   batch_size: 96
   epochs: 70
-  modality: [ 'rgb','body','face','hand','gaze' ]
+  modality: ['rgb', 'body', 'face', 'hand', 'gaze']
   learning_rate: 0.01
   weight_decay: 0.0001
   momentum: 0.9,
   param_groups: [
-    { "params": [ ], "lr": 1e-2 },
-    { "params": [ ], "lr": 5e-3 },
-    { "params": [ ], "lr": 0.0075 },
+    { "params": [], "lr": 1e-2 },
+    { "params": [], "lr": 5e-3 },
+    { "params": [], "lr": 0.0075 },
   ]
   optimizer: sgd
 

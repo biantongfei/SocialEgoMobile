@@ -7,7 +7,7 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Test SocialEgoNet on JPL-P4S")
+    parser = argparse.ArgumentParser(description="Test SocialEgoNet on JPL-Social")
     parser.add_argument("--cfg", type=str, required=True, help="Path to config file")
     parser.add_argument('--dataset', type=str, required=True)
     parser.add_argument("--check_point", type=str, required=True, help="Path to model checkpoint")
