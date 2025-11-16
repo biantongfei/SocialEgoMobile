@@ -6,7 +6,7 @@ from tools import load_config, evaluate_model
 
 import torch
 from torch.nn import functional
-from torch.optim.lr_scheduler import StepLR
+from torch.optim.lr_scheduler import CosineAnnealingLR
 
 from tqdm import tqdm
 import argparse
@@ -26,8 +26,7 @@ def independent_train(args, config):
     socialegomobile = create_socialegomobile(args, config)
     if config['train']['optimizer'] == 'adam':
         optimizer = torch.optim.Adam(socialegomobile.parameters(), lr=config['train']['learning_rate'])
-    scheduler = StepLR(optimizer, step_size=10, gamma=0.5)
-    socialegomobile = socialegomobile
+    scheduler = CosineAnnealingLR(optimizer, T_max=config['train']['independent_training_epochs'])
 
     for epoch in range(config['train']['independent_training_epochs']):
         train_loader = tqdm(train_loader, dynamic_ncols=True)
@@ -62,7 +61,7 @@ def knowledge_distillation(args, config):
     info_nce = InfoNCE(temperature=config['train']['infonce_temperature'])
     if config['train']['optimizer'] == 'adam':
         optimizer = torch.optim.Adam(socialegomobile.parameters(), lr=config['train']['learning_rate'])
-    scheduler = StepLR(optimizer, step_size=config['train']['step_size'], gamma=config['train']['gamma'])
+    scheduler = CosineAnnealingLR(optimizer, T_max=config['train']['independent_training_epochs'])
 
     for epoch in range(config['train']['num_epochs']):
         if epoch < config['train']['warmup_epochs']:

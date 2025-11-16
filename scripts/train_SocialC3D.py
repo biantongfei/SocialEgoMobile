@@ -6,6 +6,7 @@ import argparse
 import tqdm
 import torch
 from torch.nn import functional
+from torch.optim.lr_scheduler import CosineAnnealingLR
 
 
 def parse_args():
@@ -53,6 +54,7 @@ def train(args, config):
         else:
             optimizer = torch.optim.SGD(socialc3d.parameters(), weight_decay=config['train']['weight_decay'],
                                         lr=config['train']['learning_rate'])
+    scheduler = CosineAnnealingLR(optimizer, T_max=config['train']['independent_training_epochs'])
 
     for epoch in range(config['train']['epochs']):
         train_loader = tqdm(train_loader, dynamic_ncols=True)

@@ -105,7 +105,7 @@ and [HARPER](https://github.com/intelligolabs/HARPER).
 The pretrained weights of PoseC3D on Kinect-400 can be
 downloaded [here](https://github.com/open-mmlab/mmaction2/blob/main/configs/skeleton/posec3d/rgbpose_conv3d/README.md)
 and the pretrained weights of SocialC3D and SocialEgoMobile can be
-downloaded [here](https://drive.google.com/drive/folders/1j2_fad-rvbNG-Sy9VUzJ_VlRDqQ-r35B?usp=sharing).
+downloaded [here](https://drive.google.com/file/d/1tVfUaQhHnivq4qHRDusKPGptVOexWqbC/view?usp=drive_link).
 
 To train and test SocialC3D and SocialEgoMobile, you need download the data and save it under the current project path.
 
@@ -144,10 +144,11 @@ python scripts/test.py --cfg config/SocialC3D.yaml --check_point weights/sociale
 Please cite the following paper if you use this repository in your research.
 
 ```
-@INPROCEEDINGS{bian2025robust,
+@inproceedings{bian2025robust,
+  title={Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation},
   author={Bian, Tongfei and Chollet, Mathieu and Guha, Tanaya},
-  booktitle={Proceedings of the 33nd ACM International Conference on Multimedia}, 
-  title={Robust Understanding of Human-Robot Social Interactions through Multimodal Distillation}, 
+  booktitle={Proceedings of the 33rd ACM International Conference on Multimedia},
+  pages={5726--5734},
   year={2025}
 }
 ```
