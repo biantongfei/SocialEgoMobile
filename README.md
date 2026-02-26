@@ -153,7 +153,7 @@ Please cite the following paper if you use this repository in your research.
 }
 ```
 
-## Refrences
+## References
 
 ```
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. 2016. Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition. 770–778.
