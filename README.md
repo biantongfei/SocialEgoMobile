@@ -62,7 +62,7 @@ Table.1 Performance on [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 Table.2 Performance on [HARPER](https://github.com/intelligolabs/HARPER)
 
 Comparison of SocialC3D and SocialEgoMobile with state-of-the-art methods on
-the [JPL-Social](https://github.com/biantongfei/SocialEgoNet) and [HARPER](https://github.com/intelligolabs/HARPER)
+the [JPL-Social](https://drive.google.com/file/d/1_-munn3YrbmLYdqm3pEDV4oUmOwZeTVz/view?usp=drive_link) and [HARPER](https://github.com/intelligolabs/HARPER)
 dataset. SocialEgoMobile relies solely on clean body pose features as input. '+' indicates that the model uses raw image
 and gaze information. SocialEgoMobile only use body pose as input. Δ1 denotes the time to extract whole-body pose and
 gaze features from a single frame, which is 4.96 ms under our experimental setup. Δ2 refers to the extraction time for
@@ -94,9 +94,9 @@ social action forecast. Improvements on downstream task accuracy through distill
 ## Data
 
 The datasets used in this paper can be downloaded here:
-JPL_Social ([pose](https://drive.google.com/file/d/1gpH_T60e99cR_x4C5B2YKvPPa99rBzic/view?usp=sharing), [videos](http://michaelryoo.com/jpl-interaction.html))
+JPL_Social ([pose](https://drive.google.com/file/d/1_-munn3YrbmLYdqm3pEDV4oUmOwZeTVz/view?usp=drive_link), [videos](http://michaelryoo.com/jpl-interaction.html))
 and
-HARPER ([pose](https://drive.google.com/file/d/1lczAS_XYBwN4jWYMIgzRfXFGFaeA98Xf/view?usp=sharing), [images](https://github.com/intelligolabs/HARPER)).
+HARPER ([pose](https://drive.google.com/file/d/1VMUnS4ieDmnLqRk1wRm_cvbRbMnf96c9/view?usp=drive_link), [images](https://github.com/intelligolabs/HARPER)).
 A detailed description of the datasets can be found here: [JPL-Social](https://github.com/biantongfei/SocialEgoNet)
 and [HARPER](https://github.com/intelligolabs/HARPER).
 
