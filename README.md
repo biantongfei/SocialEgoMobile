@@ -130,7 +130,7 @@ python scripts/train_SocialEgoMobile.py --cfg config/train_SocialEgoMobile.yaml 
 To test the pretrained weights of SocialC3D, run
 
 ```
-python scripts/test.py --cfg config/SocialEgoMobile.yaml --check_point weights/jpl_socialc3d_rgb_body_face_hand_gaze.pt.pt
+python scripts/test.py --cfg config/SocialEgoMobile.yaml --check_point weights/jpl_socialc3d_rgb_body_face_hand_gaze.pt
 ```
 
 To test the pretrained weights of SocialEgoMobile, run
